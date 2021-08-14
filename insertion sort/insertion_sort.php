@@ -1,9 +1,12 @@
 <?php
 
+echo '插入排序法';
+
 class Insertion
 {
   public $n_array;
   public $n_count;
+  public $c = 0;
 
   public function __construct(array $array)
   {
@@ -11,17 +14,43 @@ class Insertion
     $this->n_count = count($this->n_array);
   }
 
+  /* loop method */
   public function insertion_sort()
   {
     for ($i = 1; $i < $this->n_count; $i++) {
       for ($k = $i; $k > 0; $k--) {
+        if ($this->n_array[$k - 1] < $this->n_array[$k]) {
+          break;
+        }
+        
         if ($this->n_array[$k - 1] > $this->n_array[$k]) {
           $this->swap($k - 1, $k);
           print_r($this->n_array);
         }
+        echo ($this->c += 1) . ' end<br>';
       }
-      echo $i . 'end<br>';
     }
+  }
+
+  /* recursion method */
+  public function insertion_sort_recursion($round)
+  {
+    if ($round >= $this->n_count) {
+      return;
+    }
+
+    for ($k = $round; $k > 0; $k--) {
+      if ($this->n_array[$k - 1] < $this->n_array[$k]) {
+        break;
+      }
+      if ($this->n_array[$k - 1] > $this->n_array[$k]) {
+        $this->swap($k - 1, $k);
+        print_r($this->n_array);
+      }
+      echo ($this->c += 1) . ' end<br>';
+    }
+
+    $this->insertion_sort_recursion($round + 1);
   }
 
   /* swap array number position*/
@@ -33,8 +62,8 @@ class Insertion
   }
 }
 
-$insetion = new Insertion([8, 2, 6, 10, 4]);
+$insetion = new Insertion([8, 2, 6, 10, 4, 18, 12, 16, 14]);
 
 echo '<pre>';
-print_r($insetion->insertion_sort());
+print_r($insetion->insertion_sort_recursion(1));
 echo '</pre>';
