@@ -62,7 +62,7 @@ class Insertion
   }
 }
 
-$insetion = new Insertion([8, 2, 6, 10, 4, 18, 12, 16, 14]);
+$insetion = new Insertion([18, 12, 8, 2, 14, 6, 10, 16, 4, 20]);
 
 echo '<pre>';
 print_r($insetion->insertion_sort_recursion(1));

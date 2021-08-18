@@ -17,22 +17,22 @@ class Bubble
   /* loop method */
   public function bubble_sort()
   {
-    for ($i = 0; $i < $this->n_count; $i++) {
+    for ($i = 0; $i < count($this->n_array); $i++) {
       for ($k = 1; $k < $this->n_count; $k++) {
         if ($this->n_array[$k - 1] > $this->n_array[$k]) {
           $this->swap($k - 1, $k);
           print_r($this->n_array);
+          echo ($this->c += 1) . ' end<br>';
         }
       }
-      echo ($this->c += 1) . ' end<br>';
-      $this->n_count -= 1;
+      $this->n_count--;
     }
   }
 
   /* recursion method */
   public function bubble_sort_recursion(int $round)
   {
-    if ($round > $this->n_count) {
+    if ($round > count($this->n_array)) {
       return;
     }
 
@@ -40,11 +40,11 @@ class Bubble
       if ($this->n_array[$k - 1] > $this->n_array[$k]) {
         $this->swap($k - 1, $k);
         print_r($this->n_array);
+        echo ($this->c += 1) . ' end<br>';
       }
-      echo ($this->c += 1) . ' end<br>';
     }
-
-    $this->n_count -= 1;
+    
+    $this->n_count--;
 
     $this->bubble_sort_recursion($round + 1);
   }
@@ -58,8 +58,8 @@ class Bubble
   }
 }
 
-$bubble = new Bubble([8, 2, 6, 10, 4]);
+$bubble = new Bubble([18, 12, 8, 2, 14, 6, 10, 16, 4, 20]);
 
 echo '<pre>';
-print_r($bubble->bubble_sort_recursion(0));
+print_r($bubble->bubble_sort());
 echo '</pre>';

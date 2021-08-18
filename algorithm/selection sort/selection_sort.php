@@ -46,7 +46,7 @@ class Selection
   }
 }
 
-$selection = new Selection([8, 2, 6, 10, 4]);
+$selection = new Selection([18, 12, 8, 2, 14, 6, 10, 16, 4, 20]);
 $selection->selection_sort_recursion(0);
 
 echo '<pre>';
